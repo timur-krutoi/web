@@ -3,13 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Урок 1</title>
+    <title>Поймай кнопку</title>
+    <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+    }
+
+    #area {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #111;
+      color: white;
+    }
+
+    #hud {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 18px;
+      z-index: 2;
+      user-select: none;
+    }
+
+    #btn {
+      position: absolute;
+      font-size: 6vw;
+      padding: 3vw 6vw;
+      border: 0;
+      border-radius: 12px;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    @media (min-width: 700px) {
+      #btn {
+        font-size: 24px;
+        padding: 14px 28px;
+      }
+    }
+  </style>
+
 </head>
 <body>
-    <h1 id="title">Привет, я Тимур</h1>
-    <button id="btn">Нажми меня</button>
-   <img id="screamer" src="scary.gif" hidden style="width: 100%; height: auto;">
-   <audio id="snd" src="scream55.mp3"></audio>
+<div id="area">
+    <div id="hud">
+      <div id="score">Поймал: 0</div>
+      <div id="msg">Подведи курсор к кнопке</div>
+    </div>
+<button id="btn">Нажми!</button>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
