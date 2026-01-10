@@ -5,6 +5,7 @@ let msg = document.getElementById("msg");
 
 let score = 0;
 let target = 50;
+let combo = 0
 
 function randInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -27,7 +28,7 @@ function moveButton() {
 btn.addEventListener("mouseover", function() {
   setTimeout(() => {
   moveButton();
-}, 200);
+}, 400);
 });
 
 btn.addEventListener("touchstart", function(e) {
@@ -36,9 +37,15 @@ btn.addEventListener("touchstart", function(e) {
 });
 
 btn.addEventListener("click", function() {
-  score++;
+  if (combo == 0){
+    combo = 1;
+   setTimeout(() => {
+  combo = 0;
+}, 200);
+  }
+  else{
+     score++;
   scoreText.textContent = "Поймал: " + score;
-
   if (score >= target) {
     msg.textContent = "Победа! Ты поймал " + score + " раз.";
     btn.disabled = true;
@@ -47,6 +54,7 @@ btn.addEventListener("click", function() {
     msg.textContent = "Ещё! Осталось: " + (target - score);
     moveButton();
   }
+}
 });
 
 moveButton();
